@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPosts, getPosts } from './postsSlice';
+import { getComments } from '../Comments/commentsSlice';
 
 const Posts = () => {
-  const posts = useSelector(selectPosts);
   const dispatch = useDispatch();
+  const posts = useSelector(selectPosts);
 
-  const loadComments = () => {};
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(getComments(e.target.id));
+  };
 
   useEffect(() => {
     dispatch(getPosts());
@@ -42,7 +46,9 @@ const Posts = () => {
             <p>{num_comments}</p>
             <p>{created_utc}</p>
             <p>{thumbnail}</p>
-            <button onClick={loadComments}>Load Comments</button>
+            <button id={id} onClick={handleClick}>
+              Load Comments
+            </button>
           </div>
         );
       })}

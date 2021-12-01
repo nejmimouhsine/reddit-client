@@ -1,5 +1,5 @@
-export const fetchPosts = async (name = 'popular') => {
-  const URI = `https://www.reddit.com/r/${name}.json`;
+export const fetchPosts = async (subreddit = 'home') => {
+  const URI = `https://www.reddit.com/r/${subreddit}.json`;
 
   return await fetch(URI)
     .then((response) => response.json())
@@ -37,10 +37,8 @@ export const fetchPosts = async (name = 'popular') => {
     });
 };
 
-export const fetchComments = async (props) => {
-  // const { subreddit, postId } = props;
-
-  const URL = `https://www.reddit.com/r/home/comments/r52zch.json`;
+export const fetchComments = async (postId) => {
+  const URL = `https://www.reddit.com/r/home/comments/${postId}.json`;
 
   return await fetch(URL)
     .then((res) => res.json())
@@ -60,3 +58,5 @@ export const fetchComments = async (props) => {
       });
 
       return { ...postComments };
+    });
+};

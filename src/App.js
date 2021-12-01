@@ -1,20 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-// import { fetchComments } from './api/redditAPI';
-import { getComments, selectComments } from './features/Comments/commentsSlice';
+import React from 'react';
+import Posts from './features/Posts/Posts';
 
 function App() {
-  const comments = useSelector(selectComments);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getComments());
-  }, [dispatch]);
-
-  console.log(comments);
-
-  return <div>My App</div>;
+  return (
+    <>
+      <Posts />
+    </>
+  );
 }
 
 export default App;

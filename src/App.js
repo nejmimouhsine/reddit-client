@@ -1,7 +1,12 @@
 import React from 'react';
+import Posts from './features/Posts/Posts';
 
 function App() {
-  return <div>My App</div>;
+  return (
+    <>
+      <Posts />
+    </>
+  );
 }
 
 export default App;

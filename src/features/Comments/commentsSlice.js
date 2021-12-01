@@ -3,7 +3,11 @@ import { fetchComments } from '../../api/redditAPI';
 
 export const getComments = createAsyncThunk(
   'comments/getComments',
-  fetchComments
+  async (postId) => {
+    const response = await fetchComments(postId);
+    console.log(response);
+    return response;
+  }
 );
 
 const initialState = {
@@ -30,6 +34,6 @@ const commentsSlice = createSlice({
   },
 });
 
-export const selectComments = (state) => state.comments;
+export const selectComments = (state) => state.comments.comments;
 
 export default commentsSlice.reducer;

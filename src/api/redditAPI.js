@@ -1,4 +1,4 @@
-export const fetchPosts = async (subreddit = 'home') => {
+export const fetchPosts = async (subreddit = 'popular') => {
   const URI = `https://www.reddit.com/r/${subreddit}.json`;
 
   return await fetch(URI)
@@ -38,7 +38,7 @@ export const fetchPosts = async (subreddit = 'home') => {
 };
 
 export const fetchComments = async (postId) => {
-  const URL = `https://www.reddit.com/r/home/comments/${postId}.json`;
+  const URL = `https://www.reddit.com/r/popular/comments/${postId}.json`;
 
   return await fetch(URL)
     .then((res) => res.json())

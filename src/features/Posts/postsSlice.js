@@ -1,7 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchPosts } from '../../api/redditAPI';
 
-export const getPosts = createAsyncThunk('posts/getPosts', fetchPosts);
+export const getPosts = createAsyncThunk(
+  'posts/getPosts',
+  async (subreddit = 'popular') => {
+    const response = await fetchPosts(subreddit);
+    return response;
+  }
+);
 
 const initialState = {
   posts: {},
